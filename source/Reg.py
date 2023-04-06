@@ -217,13 +217,15 @@ def Regression():
                 if output == features[0] +" vs " + list(df.columns)[-1]: 
                     figure = plt.figure(figsize=(15,10))
                     # sns.countplot(data=new_df, x=new_df[features[0]],hue=new_df[list(df.columns)[-1]])
-                    sns.lineplot(data=new_df, x=new_df[features[0]],y=new_df[list(df.columns)[-1]])
+                    #sns.lineplot(data=new_df, x=new_df[features[0]],y=new_df[list(df.columns)[-1]])
+                    sns.barplot(data=new_df, x=new_df[features[0]], y=new_df[list(df.columns)[-1]])
                     st.pyplot(figure)
 
                 elif output == features[1] + " vs " + list(df.columns)[-1]:
                     figure = plt.figure(figsize=(15,10))
                     # sns.countplot(data=new_df, x=new_df[features[1]], hue=new_df[list(df.columns)[-1]])
-                    sns.lineplot(data=new_df, x=new_df[features[1]], y=new_df[list(df.columns)[-1]])
+                    #sns.lineplot(data=new_df, x=new_df[features[1]], y=new_df[list(df.columns)[-1]])
+                    sns.barplot(data=new_df, x=new_df[features[1]], y=new_df[list(df.columns)[-1]])
                     st.pyplot(figure)
             except Exception as e:
                 st.info("select atlseat 2 features and try again")
