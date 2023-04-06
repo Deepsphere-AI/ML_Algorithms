@@ -77,7 +77,7 @@ def Regression():
             st.markdown("<p style='text-align: left; color: black; font-size:20px;'><span style='font-weight: bold'>Upload Train Data </span></p>", unsafe_allow_html=True)
     with col13:
         st.write("")
-        if model == "Linear Regression":
+        if model in ["Linear Regression","Logistic Regression"]
             csv_file = st.file_uploader("",type="csv",key='Train')
             if csv_file != None:
                 df = pd.read_csv(csv_file)
