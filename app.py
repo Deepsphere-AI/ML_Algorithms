@@ -44,13 +44,10 @@ if __name__ == "__main__":
             pass
             st.markdown("<hr style=height:2.5px;background-color:gray>",unsafe_allow_html=True)
         if selected == "Regression":
-            @st.cache
             Regression()
         if selected == "Classification":
-            @st.cache
             Classification()
         if selected == "Clustering":
-            @st.cache
             Clustering()
         if selected == "Anomaly":
             Anomaly()
