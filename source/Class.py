@@ -233,11 +233,11 @@ def Classification():
                 output = st.selectbox("",[ "Select features",features[0] +" vs "+ list(df.columns)[-1], features[1] + " vs "+list(df.columns)[-1]])
                 if output == features[0] +" vs "+ list(df.columns)[-1]: 
                     figure = plt.figure(figsize=(15,10))
-                    sns.countplot(data=new_df, x=new_df[features[0]],hue=new_df[list(df.columns)[-1]])
+                    sns.countplot(data=new_df, x=new_df[features[0]],hue=new_df[list(df.columns)[-1]],palette= ["#FF0000","#00ff00"])
                     st.pyplot(figure)
                 elif output == features[1] + " vs "+list(df.columns)[-1]:
                     figure = plt.figure(figsize=(15,10))
-                    sns.countplot(data=new_df, x=new_df[features[1]], hue=new_df[list(df.columns)[-1]])
+                    sns.countplot(data=new_df, x=new_df[features[1]], hue=new_df[list(df.columns)[-1]],palette= ["#FF0000","#00ff00"])
                     st.pyplot(figure)
             except Exception as e:
                 st.info("select atleast 2 features and try again")
