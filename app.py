@@ -9,7 +9,7 @@ import source.Cluster as clt
 from source.Anomaly import Anomaly
 # st.set_page_config(layout="wide")
 
-@st.cache
+
 
 with open('style/final.css') as f:
         st.markdown(f"<style>{f.read()}</style>",unsafe_allow_html=True)
@@ -44,10 +44,13 @@ if __name__ == "__main__":
             pass
             st.markdown("<hr style=height:2.5px;background-color:gray>",unsafe_allow_html=True)
         if selected == "Regression":
+            @st.cache
             Regression()
         if selected == "Classification":
+            @st.cache
             Classification()
         if selected == "Clustering":
+            @st.cache
             Clustering()
         if selected == "Anomaly":
             Anomaly()
