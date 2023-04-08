@@ -9,6 +9,8 @@ import source.Cluster as clt
 from source.Anomaly import Anomaly
 # st.set_page_config(layout="wide")
 
+@st.cache
+
 with open('style/final.css') as f:
         st.markdown(f"<style>{f.read()}</style>",unsafe_allow_html=True)
 imcol1, imcol2, imcol3 = st.columns((2,5,3))
