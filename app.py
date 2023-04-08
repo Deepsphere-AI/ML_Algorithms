@@ -6,7 +6,7 @@ from source.Reg import Regression
 from source.Class import Classification
 from source.Cluster import Clustering
 import source.Cluster as clt
-
+from source.Anomaly import Anomaly
 # st.set_page_config(layout="wide")
 
 with open('style/final.css') as f:
@@ -23,9 +23,9 @@ with imcol3:
 
 with st.sidebar:
     selected = st.selectbox("",
-                     ['Select Application',"Classification","Regression","Clustering"],key='text')
+                     ['Select Application',"Classification","Regression","Clustering","Anomaly"],key='text')
     Library = st.selectbox("",
-                     ["Library Used","Streamlit","Numpy","Pandas","matplotlib","scikit-learn"],key='text1')
+                     ["Library Used","Streamlit","Image","Pandas","matplotlib","scikit-learn"],key='text1')
     
     # Gcp_cloud = st.selectbox("",
     #                  ["GCP Services Used","VM Instance","Computer Engine","Cloud Storage"],key='text2')
@@ -47,5 +47,7 @@ if __name__ == "__main__":
             Classification()
         if selected == "Clustering":
             Clustering()
+        if selected == "Anomaly":
+            Anomaly()
     # except BaseException as error:
     #     st.error(error)
