@@ -25,7 +25,7 @@ with st.sidebar:
     selected = st.selectbox("",
                      ['Select Application',"Classification","Regression","Clustering","Anomaly"],key='text')
     Library = st.selectbox("",
-                     ["Library Used","Streamlit","Image","Pandas","matplotlib","scikit-learn"],key='text1')
+                     ["Library Used","Streamlit","Pandas","matplotlib","scikit-learn"],key='text1')
     
     # Gcp_cloud = st.selectbox("",
     #                  ["GCP Services Used","VM Instance","Computer Engine","Cloud Storage"],key='text2')
