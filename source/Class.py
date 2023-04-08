@@ -47,7 +47,7 @@ def Classification():
         st.write("# ")
         st.markdown("<p style='text-align: left; color: black; font-size:20px;'><span style='font-weight: bold'>Problem Statement </span></p>", unsafe_allow_html=True)
     with col13:
-        vAR_problem = st.selectbox("",["Select","Student grade classification","Bank Loan classification"])
+        vAR_problem = st.selectbox("",["Select","Student (pass/fail) classification","Bank (approved/denied) classification"])
     with col14:
         st.write("")
     with col15:
@@ -58,11 +58,11 @@ def Classification():
     with col11:
         st.write("# ")
     with col12:
-        if vAR_problem in ["Student grade classification","Bank Loan classification"]:
+        if vAR_problem in ["Student (pass/fail) classification","Bank (approved/denied) classification"]:
             st.write("# ")
             st.markdown("<p style='text-align: left; color: black; font-size:20px;'><span style='font-weight: bold'>Model Selection </span></p>", unsafe_allow_html=True)
     with col13:
-        if vAR_problem in ["Student grade classification","Bank Loan classification"]:
+        if vAR_problem in ["Student (pass/fail) classification","Bank (approved/denied) classification"]:
             model = st.selectbox("",["Select Model","Decision Tree Classifier","Random Forest"])
     with col14:
         st.write("# ")
