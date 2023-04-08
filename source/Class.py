@@ -58,7 +58,7 @@ def Classification():
     with col11:
         st.write("# ")
     with col12:
-        if vAR_problem in ["Student pass/fail classification","Bank approved/denied classification"]:
+        if vAR_problem in ["Student (pass/fail) classification","Bank (approved/denied) classification"]:
             st.write("# ")
             st.markdown("<p style='text-align: left; color: black; font-size:20px;'><span style='font-weight: bold'>Model Selection </span></p>", unsafe_allow_html=True)
     with col13:
