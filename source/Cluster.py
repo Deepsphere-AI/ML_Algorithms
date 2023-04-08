@@ -252,7 +252,7 @@ def Clustering():
                     st.write("")
                     st.write("# ")
                     st.write("")
-                    output_preview = st.button("Display3")
+                    output_preview = st.button("Predict")
                     
             if output_preview == True:
                 # if comparison =="Age vs Spending Score":
@@ -334,7 +334,7 @@ def Clustering():
                     st.write("")
                     st.write("# ")
                     st.write("")
-                    output_preview = st.button("Display3")
+                    output_preview = st.button("Predict")
             
             if output_preview == True:
                 kmeans = KMeans(n_clusters = 4, init = 'k-means++', random_state = 42)
@@ -588,7 +588,7 @@ def Clustering():
                     st.write("")
                     st.write("# ")
                     st.write("")
-                    output_preview = st.button("Display3")
+                    output_preview = st.button("Predict")
             
             if output_preview == True:
                 kmeans = KMeans(n_clusters = 3, init = 'k-means++', random_state = 42)
