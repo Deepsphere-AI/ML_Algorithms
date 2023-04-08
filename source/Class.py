@@ -35,7 +35,7 @@ def Classification():
     Display = False
     Classifer = None
 
-    st.markdown("<p style='text-align: center; color: black; font-size:20px;'><span style='font-weight: bold'>Problem Statement: </span>Application to Classification model</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; color: black; font-size:20px;'><span style='font-weight: bold'>Problem Statement: </span>Application to Classificaiton model</p>", unsafe_allow_html=True)
     st.markdown("<hr style=height:2.5px;background-color:gray>",unsafe_allow_html=True)
     col11,col12,col13,col14,col15 = st.columns([1.5,4,4.75,1,1.75])
     # PROBLEM SATEMENT
@@ -47,7 +47,7 @@ def Classification():
         st.write("# ")
         st.markdown("<p style='text-align: left; color: black; font-size:20px;'><span style='font-weight: bold'>Problem Statement </span></p>", unsafe_allow_html=True)
     with col13:
-        vAR_problem = st.selectbox("",["Select Problem Statement","Student (pass/fail) classification","Bank (approved/denied) classification"])
+        vAR_problem = st.selectbox("",["Select","Student grade classification","Bank Loan classification"])
     with col14:
         st.write("")
     with col15:
@@ -58,11 +58,11 @@ def Classification():
     with col11:
         st.write("# ")
     with col12:
-        if vAR_problem in ["Student (pass/fail) classification","Bank (approved/denied) classification"]:
+        if vAR_problem in ["Student grade classification","Bank Loan classification"]:
             st.write("# ")
             st.markdown("<p style='text-align: left; color: black; font-size:20px;'><span style='font-weight: bold'>Model Selection </span></p>", unsafe_allow_html=True)
     with col13:
-        if vAR_problem in ["Student (pass/fail) classification","Bank (approved/denied) classification"]:
+        if vAR_problem in ["Student grade classification","Bank Loan classification"]:
             model = st.selectbox("",["Select Model","Decision Tree Classifier","Random Forest"])
     with col14:
         st.write("# ")
@@ -201,7 +201,7 @@ def Classification():
                 Classifer.fit(x,y)
                 df_test = pd.read_csv(test_file)
                 test_x = df_test[features].values
-                y_pred = Classifer.predict(test_x)
+                y_pred = Classifer.predict(test_x)  
                 new_df = df_test[features]
                 new_df[list(df.columns)[-1]] = y_pred
     with col44:
@@ -224,28 +224,55 @@ def Classification():
                 st.write("# ")
                 # st.write("# ")
                 # st.write("# ")
-                st.write("")
+                # st.write("")
                 st.markdown("<p style='text-align: left; color: black; font-size:20px;'><span style='font-weight: bold'>Data Visualization</span></p>", unsafe_allow_html=True)
+    
+    vizfeatures = []
+    for i in features:
+        vizfeatures.append(i+' vs '+list(df.columns)[-1])
+
+    vizfiz=['Select the feature']+vizfeatures
     with col53:
         if test_file != None:
-            try:
-                st.write("")
-                output = st.selectbox("",[ "Select features",features[0] +" vs "+ list(df.columns)[-1], features[1] + " vs "+list(df.columns)[-1]])
-                if output == features[0] +" vs "+ list(df.columns)[-1]: 
-                    figure = plt.figure(figsize=(15,10))
-                    sns.countplot(data=new_df, x=new_df[features[0]],hue=new_df[list(df.columns)[-1]],palette= ["#FF0000","#00ff00"])
-                    st.pyplot(figure)
-                elif output == features[1] + " vs "+list(df.columns)[-1]:
-                    figure = plt.figure(figsize=(15,10))
-                    sns.countplot(data=new_df, x=new_df[features[1]], hue=new_df[list(df.columns)[-1]],palette= ["#FF0000","#00ff00"])
-                    st.pyplot(figure)
-            except Exception as e:
-                st.info("select atleast 2 features and try again")
+            output = st.selectbox("",vizfiz)
+            for j in range(0,len(vizfeatures)):
+                if output == vizfeatures[j]:
+                    if len(np.unique(df_test[features[j]]))>4:
+                        # figure = plt.figure(figsize=(15,10))
+                        # sns.countplot(data=new_df, x=new_df[features[j]],hue=new_df[list(df.columns)[-1]],palette= ["#FF0000",                 "#00ff00"])
+                        # st.pyplot(figure)
+                        figure = plt.figure(figsize=(15,10))
+                        sns.scatterplot(data=new_df, x=new_df[features[j]],y=new_df[list(df.columns)[-1]],hue=new_df[list(df.columns)[-1]],palette= ["#FF0000","#00ff00"])
+                        plt.title(vizfeatures[j])
+                        plt.legend(labels = ['Yes', 'No'])
+                        st.pyplot(figure)
+                    
+                    else: 
+                        figure = plt.figure(figsize=(15,10))
+                        sns.countplot(data=new_df, x=new_df[features[j]],hue=new_df[list(df.columns)[-1]],palette= ["#FF0000","#00ff00"])
+                        plt.title(vizfeatures[j])
+                        plt.legend(labels = ['No', 'Yes'])
+                        st.pyplot(figure)
+            # try:
+            #     st.write("")
+            #     output = st.selectbox("",[ "Select features",features[0] +" vs "+ list(df.columns)[-1], features[1] + " vs "+list(df.columns)[-1]])
+            #     if output == features[0] +" vs "+ list(df.columns)[-1]: 
+            #         figure = plt.figure(figsize=(15,10))
+            #         sns.countplot(data=new_df, x=new_df[features[0]],hue=new_df[list(df.columns)[-1]])
+            #         st.pyplot(figure)
+            #     elif output == features[1] + " vs "+list(df.columns)[-1]:
+            #         figure = plt.figure(figsize=(15,10))
+            #         sns.countplot(data=new_df, x=new_df[features[1]], hue=new_df[list(df.columns)[-1]])
+            #         st.pyplot(figure)
+            # except Exception as e:
+            #     st.info("select atleast 2 features and try again")
     with col54:
         st.write("")
     with col55:
         st.write("")
 
 # Classification()
+
+    
 
     
