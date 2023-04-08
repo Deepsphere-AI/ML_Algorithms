@@ -59,7 +59,7 @@ def Anomaly():
                 st.write("")
                 st.markdown("<p style='text-align: left; color: black; font-size:20px;'><span style='font-weight: bold'>Upload Train Data </span></p>", unsafe_allow_html=True)
     with col23:
-        if vAR_model =="IsolationForest":
+        if vAR_model =="Isolation Forest":
             csv_file = st.file_uploader("",type="csv",key='Train')
             if csv_file != None:
                 df = pd.read_csv(csv_file)
